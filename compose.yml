@@ -23,7 +23,7 @@ services:
     build: .docker/api
     stdin_open: true
     tty: true
-    container_name: api.kanban
+    container_name: api.Status1
     environment:
       NODE_ENV: development
       CHOKIDAR_USEPOLLING: true
