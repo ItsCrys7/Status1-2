@@ -2,13 +2,13 @@
   <Navbar />
 
   <section class="text-center p-8 bg-gray-100">
-    <h2 class="text-3xl font-bold mb-4">Your Profile</h2>
-    <p class="text-gray-600">Manage your account details and preferences</p>
+    <h2 class="text-3xl font-bold mb-4">Profiles</h2>
+    <p class="text-gray-600">Manage your profile details and preferences</p>
   </section>
 
   <section class="max-w-4xl mx-auto p-6">
     <!-- Profile Card -->
-    <div class="bg-white shadow rounded p-6 flex flex-col md:flex-row items-center gap-6 mb-8">
+    <!-- <div class="bg-white shadow rounded p-6 flex flex-col md:flex-row items-center gap-6 mb-8">
       <div class="flex-shrink-0">
         <i class="bi bi-person-circle text-[4rem] text-teal-500"></i>
       </div>
@@ -19,11 +19,11 @@
           <i class="bi bi-pencil-square mr-2"></i>Edit Profile
         </button>
       </div>
-    </div>
+    </div> -->
 
     <!-- Kanban Lists Section -->
     <div class="bg-white shadow rounded p-6">
-      <h2 class="text-2xl font-bold mb-4">Kanban Lists</h2>
+      <h2 class="text-2xl font-bold mb-4">People's</h2>
 
       <div v-for="(list, index) in kanban.lists" :key="index" class="mb-4">
         <input
@@ -37,7 +37,7 @@
       <div class="mt-6 flex flex-col md:flex-row items-start md:items-center gap-4">
         <input v-model="newListName" class="border p-2 rounded w-full md:w-auto" placeholder="New list name" />
         <button @click="addList" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-          Add List
+          Add Name
         </button>
       </div>
     </div>

@@ -23,7 +23,6 @@ POST http://localhost:3000/kanban/add-new-task
 Content-Type: application/json
 
 {
-    "listId": 3,
-    "name": "to do",
-    "lastname": "CT"
+    "listId": 5,
+    "name": "Crys"
 }

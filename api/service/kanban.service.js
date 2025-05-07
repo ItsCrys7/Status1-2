@@ -38,7 +38,7 @@ export const addNewList = (columnName) => {
   writeData(data)
 }
 
-export const addNewTask = (listId, taskName, taskLastName) => {
+export const addNewTask = (listId, taskName) => {
   const data = readData()
   data[listId].tasks.push({ name: taskName })
   writeData(data)
