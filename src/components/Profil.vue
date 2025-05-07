@@ -1,5 +1,5 @@
 <template>
-  <Navbar/>
+  <Navbar />
 
   <section class="text-center p-8 bg-gray-100">
     <h2 class="text-3xl font-bold mb-4">Your Profile</h2>
@@ -8,7 +8,7 @@
 
   <section class="max-w-4xl mx-auto p-6">
     <!-- Profile Card -->
-    <div class="bg-white shadow rounded p-6 flex flex-col md:flex-row items-center gap-6">
+    <div class="bg-white shadow rounded p-6 flex flex-col md:flex-row items-center gap-6 mb-8">
       <div class="flex-shrink-0">
         <i class="bi bi-person-circle text-[4rem] text-teal-500"></i>
       </div>
@@ -21,32 +21,50 @@
       </div>
     </div>
 
-    <!-- Account Settings -->
-    <div class="mt-8">
-      <h4 class="text-lg font-bold mb-4">Account Settings</h4>
-      <ul class="space-y-4">
-        <li class="bg-gray-100 p-4 rounded flex items-center justify-between">
-          <span><i class="bi bi-lock-fill mr-2 text-teal-500"></i>Change Password</span>
-          <button class="text-teal-600 hover:underline">Update</button>
-        </li>
-        <li class="bg-gray-100 p-4 rounded flex items-center justify-between">
-          <span><i class="bi bi-bell-fill mr-2 text-teal-500"></i>Notifications</span>
-          <button class="text-teal-600 hover:underline">Manage</button>
-        </li>
-        <li class="bg-gray-100 p-4 rounded flex items-center justify-between">
-          <span><i class="bi bi-box-arrow-right mr-2 text-teal-500"></i>Log Out</span>
-          <button class="text-red-600 hover:underline">Logout</button>
-        </li>
-      </ul>
+    <!-- Kanban Lists Section -->
+    <div class="bg-white shadow rounded p-6">
+      <h2 class="text-2xl font-bold mb-4">Kanban Lists</h2>
+
+      <div v-for="(list, index) in kanban.lists" :key="index" class="mb-4">
+        <input
+          class="border p-2 rounded mr-2 w-full md:w-auto"
+          v-model="list.name"
+          @blur="kanban.editList(index, list.name)"
+        />
+        <button @click="kanban.deleteList(index)" class="text-red-600">🗑</button>
+      </div>
+
+      <div class="mt-6 flex flex-col md:flex-row items-start md:items-center gap-4">
+        <input v-model="newListName" class="border p-2 rounded w-full md:w-auto" placeholder="New list name" />
+        <button @click="addList" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Add List
+        </button>
+      </div>
     </div>
   </section>
 
-  <Footer/>
+  <Footer />
 </template>
 
 <script setup>
-import Navbar from './Navbar.vue';
-import Footer from './Footer.vue';
+import { ref, onMounted } from 'vue'
+import Navbar from './Navbar.vue'
+import Footer from './Footer.vue'
+import { useKanban } from '../stores/kanban'
+
+const kanban = useKanban()
+const newListName = ref("")
+
+onMounted(() => {
+  kanban.fetchKanbanLists()
+})
+
+const addList = () => {
+  if (newListName.value.trim() !== "") {
+    kanban.addNewList(newListName.value)
+    newListName.value = ""
+  }
+}
 </script>
 
 <style>

@@ -49,6 +49,18 @@ export const useKanban = defineStore("kanban", {
           }
         }
       )
-    }
+    },
+    editList(id, newName) {
+      this.lists[id].name = newName
+      axios.put(
+        "http://localhost:3000/kanban/edit-list",
+        { data: { id, name: newName } },
+        {
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }
+      )
+    }    
   }
 })

@@ -56,3 +56,15 @@ kanbanRouter.put("/edit-list", (req, res) => {
   editList(id, name)
   res.send("ok")
 })
+
+kanbanRouter.post("/add-new-task", (req, res) => {
+  const { listId, name, lastname } = req.body
+  try {
+    addNewTask(listId, name, lastname)
+    res.send("ok")
+  } catch (e) {
+    res.status(400).send(e.message)
+  }
+})
+
+

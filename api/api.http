@@ -8,3 +8,22 @@ GET {{mainUrl}}
 #
 GET {{mainUrl}}/test
 
+###
+PUT http://localhost:3000/kanban/edit-list
+
+Content-Type: application/json
+
+{
+    "id": 5,
+    "name": "Crys"
+}
+
+###
+POST http://localhost:3000/kanban/add-new-task
+Content-Type: application/json
+
+{
+    "listId": 3,
+    "name": "to do",
+    "lastname": "CT"
+}
