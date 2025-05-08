@@ -1,12 +1,12 @@
 <template>
   <Navbar />
 
-  <section class="text-center p-8 bg-gray-100">
-    <h2 class="text-3xl font-bold mb-4">Profiles</h2>
+  <section class="bg-gray-100 p-8 text-center">
+    <h2 class="mb-4 text-3xl font-bold">Profiles</h2>
     <p class="text-gray-600">Manage your profile details and preferences</p>
   </section>
 
-  <section class="max-w-4xl mx-auto p-6">
+  <section class="mx-auto max-w-4xl p-6">
     <!-- Profile Card -->
     <!-- <div class="bg-white shadow rounded p-6 flex flex-col md:flex-row items-center gap-6 mb-8">
       <div class="flex-shrink-0">
@@ -22,21 +22,25 @@
     </div> -->
 
     <!-- Kanban Lists Section -->
-    <div class="bg-white shadow rounded p-6">
-      <h2 class="text-2xl font-bold mb-4">People's</h2>
+    <div class="rounded bg-white p-6 pb-8 shadow">
+      <h2 class="mb-4 text-2xl font-bold">People's</h2>
 
       <div v-for="(list, index) in kanban.lists" :key="index" class="mb-4">
         <input
-          class="border p-2 rounded mr-2 w-full md:w-auto"
+          class="mr-2 w-full rounded border p-2 md:w-auto"
           v-model="list.name"
           @blur="kanban.editList(index, list.name)"
         />
         <button @click="kanban.deleteList(index)" class="text-red-600">🗑</button>
       </div>
 
-      <div class="mt-6 flex flex-col md:flex-row items-start md:items-center gap-4">
-        <input v-model="newListName" class="border p-2 rounded w-full md:w-auto" placeholder="New list name" />
-        <button @click="addList" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+      <div class="mt-6 flex flex-col items-start gap-4 md:flex-row md:items-center">
+        <input
+          v-model="newListName"
+          class="w-full rounded border p-2 md:w-auto"
+          placeholder="New list name"
+        />
+        <button @click="addList" class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
           Add Name
         </button>
       </div>
@@ -47,10 +51,10 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import Navbar from './Navbar.vue'
-import Footer from './Footer.vue'
-import { useKanban } from '../stores/kanban'
+import { ref, onMounted } from "vue"
+import Navbar from "./Navbar.vue"
+import Footer from "./Footer.vue"
+import { useKanban } from "../stores/kanban"
 
 const kanban = useKanban()
 const newListName = ref("")
