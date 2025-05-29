@@ -3,7 +3,7 @@ services:
     build: .docker/app
     stdin_open: true
     tty: true
-    container_name: app.Status1
+    container_name: app.status2
     environment:
       NODE_ENV: development
       CHOKIDAR_USEPOLLING: true
@@ -23,7 +23,7 @@ services:
     build: .docker/api
     stdin_open: true
     tty: true
-    container_name: api.Status1
+    container_name: api.status2
     environment:
       NODE_ENV: development
       CHOKIDAR_USEPOLLING: true
@@ -33,6 +33,57 @@ services:
     volumes:
       - ./api:/api
       # exclude
-      # - /api/.git/
+      - /api/.git/
     working_dir: /api
     user: 1000:1000
+
+  ws:
+      build: .docker/ws
+      stdin_open: true
+      tty: true
+      container_name: ws.status2
+      environment:
+        NODE_ENV: development
+        CHOKIDAR_USEPOLLING: true
+        CHOKIDAR_INTERVAL: 100
+      ports:
+        - "3001:3001"
+      volumes:
+        - ./ws:/ws
+        # exclude
+        - /ws/.git/
+      working_dir: /ws
+      user: 1000:1000
+
+  mysql:
+    image: mysql:8.0.40
+    container_name: mysql.status2
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: status2
+      MYSQL_USER: status2
+      MYSQL_PASSWORD: status2
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./.docker/mysql/utf8mb4.cnf:/etc/mysql/conf.d/utf8mb4.cnf:ro
+      - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./database:/database:rw
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.1
+    container_name: pma.status2
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql.status2
+      PMA_USER: status2
+      PMA_PASSWORD: status2
+      UPLOAD_LIMIT: 250M
+    restart: always
+
+volumes:
+  mysql_data:
+    driver: local

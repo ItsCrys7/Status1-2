@@ -19,6 +19,9 @@
 //   return lists
 // }
 /////////////////////////////////////////////////////////////
+export const lists = []
+import { List, sequelize, Task } from "../db.js"
+
 import fs from "fs"
 const dataPath = "./kanban.data.json"
 
