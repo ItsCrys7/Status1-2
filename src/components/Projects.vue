@@ -11,7 +11,7 @@
           <span>Proiect nou</span>
         </router-link> -->
         <a
-          href="temp2.html"
+          href="temp1"
           class="bg-teal-500 text-white py-2 px-4 rounded-lg flex items-center space-x-2 hover:bg-teal-600"
         >
           <i class="bi bi-file-earmark-plus-fill"></i>

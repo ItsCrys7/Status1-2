@@ -1,7 +1,7 @@
 <template>
     <main class="flex-grow flex items-center justify-center">
       <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-bold text-center mb-6">Sign Up to Planify</h2>
+        <h2 class="text-2xl font-bold text-center mb-6">Sign Up to Planify with E-mail</h2>
         <form action="#" class="space-y-4">
           <input
             type="email"

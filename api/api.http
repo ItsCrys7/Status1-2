@@ -1,28 +1,33 @@
-@mainUrl = http://localhost:3000/
-
-###
-# 
-GET {{mainUrl}}
+@mainUrl = http://localhost:3000
 
 ###
 #
-GET {{mainUrl}}/test
-
-###
-PUT http://localhost:3000/kanban/edit-list
-
+POST  {{mainUrl}}/status2/add-new-list
 Content-Type: application/json
 
 {
-    "id": 5,
-    "name": "Crys"
+    "name": "test"
 }
 
 ###
-POST http://localhost:3000/kanban/add-new-task
+#
+DELETE   {{mainUrl}}/status2/delete-list
 Content-Type: application/json
 
 {
-    "listId": 5,
-    "name": "Crys"
+    "id": "1"
+}
+
+###
+#
+GET {{mainUrl}}/status2
+
+###
+#
+POST {{mainUrl}}/status2/add-new-task
+Content-Type: application/json
+
+{
+    "listId": "2",
+    "name": "taskName"
 }

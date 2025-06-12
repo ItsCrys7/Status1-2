@@ -53,7 +53,7 @@
           class="w-full bg-teal-500 text-white py-2 px-4 rounded-md hover:bg-teal-600"
         >
           Salvare
-        </button>a
+        </button>
       </form>
   </main>
 
