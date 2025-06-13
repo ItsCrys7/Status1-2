@@ -24,7 +24,7 @@ kanbanRouter.post("/add-new-list", async (req, res) => {
   res.send("ok")
 })
 
-kanbanRouter.post("/add-new-task", async (req, res) => {
+kanbanRouter.post("/add-new-task", async (req, res) => { 
   const { listId, name } = req.body
   const checkname = new RegExp("^[a-zA-Z0-9 ]*$")
   if (!checkname.test(name)) {

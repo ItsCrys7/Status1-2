@@ -28,11 +28,11 @@
     </section>
 
     <!-- About you page -->
-    <section id="SelfDescription" class="bg-teal-500 text-white text-center p-[2rem]">
+    <section id="AboutYou" class="bg-teal-500 text-white text-center p-[2rem]">
       <h3 class="text-[2rem] font-bold mb-[1rem]">Ready to Start?</h3>
       <p class="mb-[1rem]">Start today, while it's free! Tomorrow it might not be.</p>
       <a
-        href="SelfDescription"
+        href="AboutYou"
         class="bg-white text-teal-500 px-[2rem] py-[1rem] rounded hover:bg-teal-200 hover:text-black"
         >Tell us about yourself</a
       >

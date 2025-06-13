@@ -31,9 +31,24 @@
           class="mr-2 w-full rounded border p-2 md:w-auto"
           @blur="kanban.editList(list.id, list.name)"
         />
-        <button class="text-red-600" @click="kanban.editList(list.id, list.name)">Edit</button>
-        <button class="text-red-600" @click="kanban.deleteList(list.id)">🗑</button>
-        <button class="text-green-600" @click="showTaskInput(list.id)">Add task</button>
+        <button
+          class="rounded border border-transparent px-2 py-1 text-cyan-600 hover:border-teal-500"
+          @click="kanban.editList(list.id, list.name)"
+        >
+          Edit
+        </button>
+        <button
+          class="rounded border border-transparent px-2 py-1 text-red-600 hover:border-teal-500"
+          @click="kanban.deleteList(list.id)"
+        >
+          Delete
+        </button>
+        <button
+          class="rounded border border-transparent px-2 py-1 text-black hover:border-teal-500"
+          @click="showTaskInput(list.id)"
+        >
+          Add task
+        </button>
 
         <!-- Formularea pentru adăugare task -->
         <div
@@ -115,8 +130,6 @@ function submitTask() {
     selectedListId.value = null
   }
 }
-
-
 
 const cancelTask = () => {
   selectedListId.value = null

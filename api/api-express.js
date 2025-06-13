@@ -56,8 +56,12 @@
 ////////////////////////////////////////////////////////////////
 import express from "express"
 import bodyParser from "body-parser"
-import { kanbanRouter } from "./routing/kanban.router.js"
+import { kanbanRouter } from "./routing/list.router.js"
 import { generalRouter } from "./routing/general.router.js"
+import { aboutYouRouter } from "./routing/aboutYou.router.js"
+import { authRouter } from "./routing/auth.router.js"
+import { temp2Router } from "./routing/temp2.router.js"
+
 import cors from "cors"
 
 const api = express()
@@ -65,11 +69,13 @@ const port = 3000
 
 api.use(bodyParser.json())
 
-api.use(cors({
-  origin: 'http://localhost:5173', // sau true pentru toate originile în dev
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  credentials: true
-}));
+api.use(
+  cors({
+    origin: "http://localhost:5173", // sau true pentru toate originile în dev
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    credentials: true
+  })
+)
 
 //Add headers before the routes are defined
 api.use(function (req, res, next) {
@@ -93,9 +99,15 @@ api.use(function (req, res, next) {
 api.use(generalRouter)
 api.use("/status2", kanbanRouter)
 
-api.get('/status2', (req, res) => {
-  res.send('API is running.');
-});
+api.get("/status2", (req, res) => {
+  res.send("API is running.")
+})
+
+api.use("/about-you", aboutYouRouter)
+
+api.use("/auth", authRouter)
+
+api.use("/temp2", temp2Router)
 
 api.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

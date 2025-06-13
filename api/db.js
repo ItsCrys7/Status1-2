@@ -280,7 +280,14 @@ export const Accounts = sequelize.define(
         notEmpty: true,
       },
     },
-    name: {
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -316,7 +323,42 @@ export const AboutYou = sequelize.define(
       },
     },
     text: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+  },
+  {
+    sequelize,
+    freezeTableName: true,
+    paranoid: true,             
+    timestamps: true,         
+  }
+)
+
+export const Temp2 = sequelize.define(
+  "Temp2",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+    text: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
